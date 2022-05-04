@@ -30,8 +30,7 @@ ENV JAR_FILE=$("ls target/*.jar |head -1")
 RUN mkdir -p $HOME
 WORKDIR $HOME
 
-ADD . git...
-RUN mvn package
+RUN git clone https://github.com/usouza1/DockerComposeJavaPersistence.git && mvn package
 
 COPY target/$JAR_FILE $JAR_FILE
 ENTRYPOINT java -jar $JAR_FILE
