@@ -32,5 +32,5 @@ WORKDIR $HOME
 
 RUN git clone https://github.com/usouza1/DockerComposeJavaPersistence.git && mvn package
 
-COPY target/$JAR_FILE $JAR_FILE
-ENTRYPOINT java -jar $JAR_FILE
+#COPY target/$JAR_FILE $JAR_FILE
+ENTRYPOINT java -jar target/$JAR_FILE
