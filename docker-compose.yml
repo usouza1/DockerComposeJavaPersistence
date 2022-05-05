@@ -1,0 +1,37 @@
+version: '2'
+services:
+    myapp:
+        container_name: myapp
+        build:
+          context: .
+          dockerfile: Dockerfile
+          args:
+            REPO: https://github.com/usouza1/DockerComposeJavaPersistence.git
+        image: myapp:v1
+        ports:
+          - 8080:8080
+        networks:
+          - myapp-network
+    
+    db:
+        container_name: db
+        image: mysql:8.0.29-oracle
+        environment:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: dbprodutos
+        ports:
+          - 3306:3306
+        networks:
+          - myapp-network
+    
+    mysql-adminer:
+      container_name: mysql-adminer
+      image: adminer:latest
+      ports:
+        - 8081:8080
+      networks:
+        - myapp-network
+
+networks:
+    myapp-network:
+        driver: bridge

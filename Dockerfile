@@ -10,7 +10,7 @@ WORKDIR $HOME
 
 RUN apt update \
     && apt install -y git \
-    && git clone $REPO $HOME
+    && git clone $REPO .
 
 RUN mvn package
 
