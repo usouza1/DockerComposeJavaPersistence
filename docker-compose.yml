@@ -7,9 +7,15 @@ services:
           dockerfile: Dockerfile
           args:
             REPO: https://github.com/usouza1/DockerComposeJavaPersistence.git
+            CACHEBUST: 3
         image: myapp:v1
         ports:
           - 8080:8080
+        environment:
+          DB_JDBC_DRIVER: com.mysql.jdbc.Driver
+          DB_URL: jdbc:mysql://db:3306/dbprodutos?serverTimezone=UTC
+          DB_USERNAME: root
+          DB_PASSWORD: root
         networks:
           - myapp-network
     
